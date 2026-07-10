@@ -14,7 +14,8 @@
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:Pretendard,"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;
-  line-height:1.65; font-size:16px;
+  line-height:1.7; font-size:16px;
+  word-break:keep-all; overflow-wrap:break-word; line-break:strict;
 }
 .wrap{max-width:760px; margin:0 auto; padding:48px 22px 80px}
 .eyebrow{font-size:12px; letter-spacing:.14em; color:var(--sub); text-transform:uppercase; margin-bottom:10px}
@@ -27,7 +28,7 @@ p{margin:10px 0}
 /* hero: two stopwatches */
 .race{display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin:26px 0 8px}
 .clock{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 18px; box-shadow:var(--shadow)}
-.clock .lbl{font-size:13px; color:var(--sub); margin-bottom:6px}
+.clock .lbl{font-size:13px; color:var(--sub); margin-bottom:6px; word-break:keep-all}
 .clock .t{font-size:clamp(30px,6vw,42px); font-weight:800; font-variant-numeric:tabular-nums; line-height:1.1}
 .clock.fire .t{color:var(--steel)}
 .clock.evac .t{color:var(--accent)}
@@ -107,28 +108,24 @@ li{margin:7px 0}
   <div class="date">이 문서는 위 공모전에 낼 아이디어를 팀·지도교수와 공유하려고 정리한 요약본입니다 · 2026-07-11</div>
 
   <div class="whatis">
-    <b>한 줄 요약.</b> 요양원에 불이 나면 <b>소방차가 오는 시간</b>과 <b>어르신들이 다 빠져나가는 시간</b>이 경주를 합니다.
-    서울 요양시설 413곳을 데이터로 계산해보니, 소방차가 도착하는 순간까지도 대부분 시설에서 <b>대피가 끝나지 않습니다</b>.
-    이 차이를 <b>"골든타임 갭"</b>이라고 부르고, 어느 시설부터 어떻게 손봐야 이 갭을 줄일 수 있는지 지도로 보여주는 것이 우리 아이디어입니다.
+    <b>한 줄 요약.</b> 요양원 화재의 생존은 두 시간의 싸움입니다. <b>소방차가 도착하는 시간</b>과 <b>어르신들이 모두 대피하는 시간</b>. 서울 요양시설 413곳을 분석한 결과, 소방차가 도착하는 순간까지도 대부분의 시설에서 <b>대피가 완료되지 않았습니다</b>. 이 시간 차이를 <b>‘골든타임 갭’</b>이라 정의하고, 어느 시설부터 어떻게 개선해야 갭을 줄일 수 있는지 지도로 제시하는 것이 본 제안입니다.
   </div>
 
   <div class="race">
     <div class="clock fire">
       <div class="lbl">🚒 소방차가 오는 시간</div>
       <div class="t">약 6분</div>
-      <div class="note">서울은 소방 거점이 촘촘해 어디든 5~7분. 실제 화재 기록으로 계산</div>
+      <div class="note">서울은 소방 거점이 촘촘해 어디서나 5~7분 (실제 화재 출동 기록 기준)</div>
     </div>
     <div class="minus">vs</div>
     <div class="clock evac">
       <div class="lbl">🧓 어르신이 다 나가는 시간</div>
       <div class="t">18~40분</div>
-      <div class="note">밤에는 직원 1~2명이 수십 명을 대피시켜야 함. 시설마다 다름</div>
+      <div class="note">야간에는 직원 1~2명이 수십 명을 대피 (시설별 편차 큼)</div>
     </div>
   </div>
   <div class="gapline">
-    두 시간의 차이가 <b>골든타임 갭</b>입니다. 소방차가 도착하는 순간, 서울 요양시설 안에는
-    아직 못 빠져나온 어르신이 <b>약 1만 명</b> 남아 있는 것으로 추정됩니다(이 숫자는 사망자 예측이 아니라 <b>위험에 노출되는 최대 인원</b>입니다) — 413곳 중 407곳(99%)이 그렇고,
-    밤 근무 인원을 넉넉하게 잡든 법 기준으로 잡든 결론은 같습니다.
+    이 두 시간의 차이가 <b>골든타임 갭</b>입니다. 소방차 도착 시점에 서울 요양시설 안에는 아직 대피하지 못한 어르신이 <b>약 1만 명</b> 남아 있는 것으로 추정됩니다(사망자 예측이 아니라 <b>위험에 노출되는 최대 인원</b>입니다). 413곳 중 407곳, 즉 99%가 이 상황이며, 야간 인력을 넉넉히 잡든 법정 기준으로 잡든 결론은 동일합니다.
   </div>
 
   <h2><span class="no">01</span>무엇을 알아냈나</h2>
