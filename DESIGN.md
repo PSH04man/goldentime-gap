@@ -7,7 +7,7 @@
 
 - **주제**: 소방 골든타임 vs 요양시설 대피 시간 — 생명 데이터를 다루는 진지한 브리핑
 - **톤**: 신뢰·절제. 화려함보다 가독성. 위험은 단 하나의 색으로만 말한다
-- **테마**: 라이트 단일 (dark 변형 없음 — 공유·인쇄·발표 환경 일관성을 위해 의도적 선택)
+- **테마**: 라이트 본문 + **다크 네이비 히어로 밴드**(#101722→#1a2433 그라데이션) — 심야 화재라는 주제의 정서. 본문은 라이트 유지
 
 ## Color Tokens
 
@@ -27,7 +27,8 @@
 
 ## Typography
 
-- 스택: `Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif` (웹폰트 미사용 — CSP·오프라인 안전)
+- 스택: **Pretendard Variable** (jsdelivr CDN dynamic-subset) → Noto Sans KR → Malgun Gothic 폴백
+- `word-break: keep-all` 필수 — 한글 어절 단위 줄바꿈
 - 본문 16px / 행간 1.65 / 본문 폭 max 760px
 - 숫자는 `font-variant-numeric: tabular-nums` (카운터·표)
 - 섹션 헤딩: `01`~`07` steel 색 번호 + 굵은 제목 — 번호는 실제 읽기 순서를 의미
@@ -41,6 +42,10 @@
 ## Motion
 
 - **절제 원칙**: 정보 변화를 따라가게 돕는 목적만. 과시성 애니메이션 금지
+- 스크롤 리빌: `.rv`(opacity+22px translateY) → IntersectionObserver로 1회 `.in`. threshold .12
+- 카운트업: `.stat .v`, `.clock .t` 화면 진입 시 1.3초
+- 레버 막대: `.lever.armed` 시 width 0→목표 (1.4초 spring)
+- 스크롤 진행선: 상단 3px accent (#prog)
 - 시나리오 전환: 점 크기 0.7초 ease-out, 카운터 1.2초, 델타 배지 0.35초 페이드업
 - `prefers-reduced-motion` 항상 존중
 
