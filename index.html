@@ -6,104 +6,148 @@
 <title>골든타임 갭 — 팀 브리핑</title>
 <style>
 :root{
-  --bg:#faf9f6; --ink:#1c2430; --sub:#5a6472; --line:#e3e0d8;
+  --bg:#f7f6f2; --ink:#16202b; --sub:#5d6773; --line:#e5e2d9;
   --card:#ffffff; --accent:#e5484d; --steel:#3d6a8f; --ok:#2f7d5a;
-  --chip:#eef1ee; --shadow:0 1px 3px rgba(28,36,48,.07);
+  --chip:#edefe9; --hero:#101722; --hero2:#1a2433; --heroink:#eef1f5; --herosub:#8fa0b5;
+  --shadow:0 1px 2px rgba(22,32,43,.05), 0 8px 24px -12px rgba(22,32,43,.12);
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0; background:var(--bg); color:var(--ink);
-  font-family:Pretendard,"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;
-  line-height:1.7; font-size:16px;
+  font-family:"Pretendard Variable",Pretendard,"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;
+  line-height:1.72; font-size:16.5px;
   word-break:keep-all; overflow-wrap:break-word; line-break:strict;
+  -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:760px; margin:0 auto; padding:48px 22px 80px}
-.eyebrow{font-size:12px; letter-spacing:.14em; color:var(--sub); text-transform:uppercase; margin-bottom:10px}
-h1{font-size:clamp(26px,5vw,34px); line-height:1.25; margin:0 0 6px; text-wrap:balance; font-weight:800}
-.date{color:var(--sub); font-size:13.5px; margin-bottom:40px}
-h2{font-size:19px; margin:52px 0 14px; font-weight:700}
-h2 .no{color:var(--steel); font-weight:800; margin-right:8px; font-variant-numeric:tabular-nums}
-p{margin:10px 0}
-.sub{color:var(--sub)}
-/* hero: two stopwatches */
-.race{display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin:26px 0 8px}
-.clock{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 18px; box-shadow:var(--shadow)}
-.clock .lbl{font-size:13px; color:var(--sub); margin-bottom:6px; word-break:keep-all}
-.clock .t{font-size:clamp(30px,6vw,42px); font-weight:800; font-variant-numeric:tabular-nums; line-height:1.1}
-.clock.fire .t{color:var(--steel)}
-.clock.evac .t{color:var(--accent)}
-.minus{align-self:center; font-size:30px; color:var(--sub); font-weight:300}
-.gapline{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:10px; padding:16px 20px; margin:14px 0 0; box-shadow:var(--shadow)}
-.gapline b{color:var(--accent)}
-.whatis{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0 8px; font-size:16px; line-height:1.7; box-shadow:var(--shadow)}
-.whatis b{color:var(--ink)}
-.internal{margin-top:44px; padding:8px 20px 4px; background:var(--chip); border:1px dashed var(--line); border-radius:12px}
-.internal h2{margin-top:28px}
-.ilabel{font-size:13px; color:var(--sub); font-weight:700; padding:12px 0 0}
+::selection{background:var(--accent); color:#fff}
+
+/* ── 스크롤 진행선 ── */
+#prog{position:fixed; top:0; left:0; height:3px; width:0; background:var(--accent); z-index:99; transition:width .1s linear}
+
+/* ── 히어로 밴드 ── */
+.hero{background:linear-gradient(160deg,var(--hero) 0%,var(--hero2) 100%); color:var(--heroink); padding:72px 22px 84px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto -20% -55% -20%; height:70%;
+  background:radial-gradient(ellipse at center, rgba(229,72,77,.14), transparent 65%); pointer-events:none}
+.heroin{max-width:820px; margin:0 auto; position:relative}
+.hero .eyebrow{font-size:12px; letter-spacing:.18em; color:var(--herosub); text-transform:uppercase; margin-bottom:22px; font-weight:600}
+.hero h1{font-size:clamp(30px,5.6vw,54px); line-height:1.22; margin:0 0 14px; font-weight:800; letter-spacing:-.02em; text-wrap:balance; color:#fff}
+.hero .date{color:var(--herosub); font-size:14px; margin-bottom:40px}
+.whatis{background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:20px 24px; margin:0 0 34px; font-size:16px; line-height:1.75; color:#cfd7e2; backdrop-filter:blur(4px)}
+.whatis b{color:#fff; font-weight:700}
+.race{display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:stretch; margin:0 0 20px}
+@media (max-width:560px){.race{grid-template-columns:1fr; }.minus{display:none}}
+.clock{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:24px 22px}
+.clock .lbl{font-size:13.5px; color:var(--herosub); margin-bottom:8px; word-break:keep-all}
+.clock .t{font-size:clamp(34px,5.5vw,46px); font-weight:800; font-variant-numeric:tabular-nums; line-height:1.05; letter-spacing:-.02em}
+.clock.fire .t{color:#7fb0d8}
+.clock.evac .t{color:#ff7a7e}
+.clock .note{font-size:13px; color:var(--herosub); margin-top:8px; line-height:1.55}
+.minus{align-self:center; font-size:22px; color:var(--herosub); font-weight:700}
+.hero .gapline{background:rgba(229,72,77,.08); border:1px solid rgba(229,72,77,.3); border-left:4px solid var(--accent); border-radius:12px; padding:18px 22px; color:#dbe2ea; font-size:15.5px}
+.hero .gapline b{color:#ff8f93}
+
+/* ── 본문 ── */
+.wrap{max-width:760px; margin:0 auto; padding:24px 22px 90px}
+h2{font-size:clamp(21px,3vw,26px); margin:96px 0 18px; font-weight:800; letter-spacing:-.01em; position:relative; text-wrap:balance}
+h2 .no{position:absolute; left:-8px; top:-46px; font-size:88px; font-weight:800; color:var(--ink); opacity:.055; letter-spacing:-.04em; z-index:-1; font-variant-numeric:tabular-nums}
+p{margin:12px 0}
+.sub{color:var(--sub); font-size:15px}
 .note{font-size:13.5px; color:var(--sub)}
-/* stats */
-.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0}
-.stat{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; box-shadow:var(--shadow)}
-.stat .v{font-size:24px; font-weight:800; font-variant-numeric:tabular-nums}
-.stat .k{font-size:12.5px; color:var(--sub); margin-top:2px}
-/* verdict table */
-table{width:100%; border-collapse:collapse; font-size:14.5px; margin:14px 0}
-th{text-align:left; font-size:12.5px; letter-spacing:.06em; color:var(--sub); font-weight:600; padding:8px 10px; border-bottom:1.5px solid var(--line)}
-td{padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+.gapline{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:12px; padding:18px 22px; margin:16px 0; box-shadow:var(--shadow); font-size:15.5px}
+.gapline b{color:var(--accent)}
+
+/* ── 통계 카드 ── */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin:22px 0}
+.stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 18px 16px; box-shadow:var(--shadow); transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s}
+.stat:hover{transform:translateY(-3px); box-shadow:0 2px 4px rgba(22,32,43,.06), 0 16px 32px -14px rgba(22,32,43,.18)}
+.stat .v{font-size:30px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-.02em; line-height:1.1}
+.stat .k{font-size:13px; color:var(--sub); margin-top:6px; line-height:1.5}
+
+/* ── 표 ── */
+table{width:100%; border-collapse:collapse; font-size:14.5px; margin:16px 0}
+th{text-align:left; font-size:12px; letter-spacing:.08em; color:var(--sub); font-weight:700; padding:10px 12px; border-bottom:2px solid var(--ink); text-transform:uppercase}
+td{padding:12px; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:none}
 td.num{font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
-.tablebox{overflow-x:auto}
-.pill{display:inline-block; font-size:12px; font-weight:700; padding:2px 9px; border-radius:999px; background:var(--chip); white-space:nowrap}
+.tablebox{overflow-x:auto; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:6px 14px; box-shadow:var(--shadow)}
+.pill{display:inline-block; font-size:12px; font-weight:700; padding:3px 10px; border-radius:999px; background:var(--chip); white-space:nowrap}
 .pill.bad{color:var(--accent)}
 .pill.good{color:var(--ok)}
 .pill.mid{color:var(--steel)}
-/* lever bars */
-.lever{margin:16px 0}
-.lever .row{display:grid; grid-template-columns:150px 1fr 90px; gap:12px; align-items:center; margin:10px 0}
-.lever .name{font-size:14px; font-weight:600}
-.lever .bar{height:22px; border-radius:4px; background:var(--chip); position:relative; overflow:hidden}
-.lever .fill{height:100%; border-radius:4px}
-.lever .f1{width:6.4%; background:var(--steel)}
-.lever .f2{width:32%; background:var(--accent); opacity:.55}
-.lever .f3{width:89%; background:var(--accent)}
-.lever .val{font-size:14px; font-weight:700; font-variant-numeric:tabular-nums; text-align:right}
-blockquote{margin:20px 0; padding:16px 20px; background:var(--card); border:1px solid var(--line); border-radius:10px; font-size:15.5px; box-shadow:var(--shadow)}
-/* map */
-.mapbox{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; box-shadow:var(--shadow); margin:18px 0}
-.mapctl{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px}
-.seg{display:inline-flex; border:1.5px solid var(--line); border-radius:8px; overflow:hidden}
-.seg button{border:0; background:transparent; color:var(--sub); font:inherit; font-size:13.5px; font-weight:600; padding:7px 14px; cursor:pointer}
+
+/* ── 해결책 비교 막대 ── */
+.lever{margin:24px 0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px 22px; box-shadow:var(--shadow)}
+.lever .row{display:grid; grid-template-columns:minmax(140px,190px) 1fr 110px; gap:16px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line)}
+.lever .row:last-child{border-bottom:none}
+@media (max-width:560px){.lever .row{grid-template-columns:1fr 80px; }.lever .bar{grid-column:1/-1; order:3}}
+.lever .name{font-size:14.5px; font-weight:700; line-height:1.45}
+.lever .name .note{font-weight:400; display:block; margin-top:2px}
+.lever .bar{height:26px; border-radius:6px; background:var(--chip); position:relative; overflow:hidden}
+.lever .fill{height:100%; border-radius:6px; width:0; transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.lever.armed .f1{width:6.4%; background:var(--steel)}
+.lever.armed .f2{width:32%; background:var(--accent); opacity:.55}
+.lever.armed .f3{width:89%; background:var(--accent)}
+.lever .val{font-size:17px; font-weight:800; font-variant-numeric:tabular-nums; text-align:right; letter-spacing:-.01em}
+
+/* ── 지도 ── */
+.mapbox{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:var(--shadow); margin:22px 0}
+.mapctl{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:14px}
+.seg{display:inline-flex; border:1.5px solid var(--line); border-radius:10px; overflow:hidden; background:var(--chip)}
+.seg button{border:0; background:transparent; color:var(--sub); font:inherit; font-size:13.5px; font-weight:700; padding:9px 15px; cursor:pointer; transition:background .25s,color .25s}
+.seg button:hover{color:var(--ink)}
 .seg button.on{background:var(--accent); color:#fff}
 .seg button:focus-visible{outline:2px solid var(--steel); outline-offset:-2px}
 .chk{display:inline-flex; align-items:center; gap:6px; font-size:13.5px; color:var(--sub); cursor:pointer; user-select:none}
+.chk input{accent-color:var(--accent)}
 .mapstat{margin-left:auto; text-align:right}
-.mapstat .v{font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--accent); line-height:1.1}
+.mapstat .v{font-size:26px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--accent); line-height:1.1; letter-spacing:-.01em}
 .mapstat .k{font-size:11.5px; color:var(--sub)}
-.gauge{width:150px;height:6px;border-radius:99px;background:var(--chip);margin:6px 0 0 auto;overflow:hidden}
-.gauge i{display:block;height:100%;border-radius:99px;background:var(--accent);width:100%;transition:width 2.2s cubic-bezier(.16,1,.3,1)}
-.delta{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--chip);opacity:0}
+.gauge{width:160px; height:6px; border-radius:99px; background:var(--chip); margin:7px 0 0 auto; overflow:hidden}
+.gauge i{display:block; height:100%; border-radius:99px; background:var(--accent); width:100%; transition:width 2.2s cubic-bezier(.16,1,.3,1)}
+.delta{display:inline-block; margin-top:7px; font-size:13px; font-weight:700; padding:3px 11px; border-radius:999px; background:var(--chip); opacity:0}
 .delta.show{animation:stamp .35s ease-out forwards}
 .delta.good{color:var(--ok)} .delta.bad{color:var(--accent)}
 @keyframes stamp{0%{opacity:0;transform:translateY(4px)}100%{opacity:1;transform:none}}
-@media (prefers-reduced-motion: reduce){.delta.show{animation:none;opacity:1;transform:none}.gauge i{transition:none}}
-#leafmap{width:100%; height:540px; border-radius:8px; background:var(--chip)}
+#leafmap{width:100%; height:540px; border-radius:10px; background:var(--chip)}
 .leaflet-container{font:inherit}
 .leaflet-tooltip{font-size:12.5px; line-height:1.5}
-.legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:10px; font-size:12.5px; color:var(--sub)}
+.legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:12px; font-size:12.5px; color:var(--sub)}
 .legend span{display:inline-flex; align-items:center; gap:6px}
 .dotL{width:12px;height:12px;border-radius:50%;background:var(--accent);opacity:.55;display:inline-block}
 .dotS{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;display:inline-block}
 .dotC{width:8px;height:8px;border-radius:50%;background:var(--steel);display:inline-block}
 .dotH{width:12px;height:12px;border-radius:50%;background:#d97706;opacity:.6;display:inline-block}
 
-ul{padding-left:20px; margin:10px 0}
-li{margin:7px 0}
-.todo li b{font-weight:700}
-.foot{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--sub)}
+/* ── 리스트·내부메모·푸터 ── */
+ul{padding-left:20px; margin:12px 0}
+li{margin:8px 0}
+.internal{margin-top:72px; padding:10px 24px 8px; background:var(--chip); border:1px dashed #cfcabc; border-radius:14px}
+.internal h2{margin-top:34px; font-size:19px}
+.internal h2 .no{font-size:60px; top:-28px}
+.ilabel{font-size:13px; color:var(--sub); font-weight:700; padding:14px 0 0}
+.foot{margin-top:64px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; color:var(--sub); line-height:1.8}
+
+/* ── 스크롤 리빌 ── */
+.rv{opacity:0; transform:translateY(22px); transition:opacity .65s cubic-bezier(.2,.7,.2,1), transform .65s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1; transform:none}
+.hero .rv{transform:translateY(16px)}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1; transform:none; transition:none}
+  .lever .fill{transition:none}
+  .delta.show{animation:none;opacity:1}
+  .gauge i{transition:none}
+  html{scroll-behavior:auto}
+}
+
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
-<div class="wrap">
+<div id="prog"></div>
+<header class="hero">
+<div class="heroin">
   <div class="eyebrow">한국폴리텍대학 강서캠퍼스 3인 팀 · 제6회 소방안전 빅데이터 경진대회 출품 아이디어 정리</div>
   <h1>소방차는 6분 만에 오는데, 어르신은 그 안에 못 나옵니다</h1>
   <div class="date">이 문서는 위 공모전에 낼 아이디어를 팀·지도교수와 공유하려고 정리한 요약본입니다 · 2026-07-11</div>
@@ -128,7 +172,9 @@ li{margin:7px 0}
   <div class="gapline">
     소방차 도착 시점에 서울 요양시설 안에 아직 대피하지 못한 어르신이 <b>약 1만 명</b>(413곳 중 407곳, 99%). 사망자 예측이 아니라 <b>위험에 노출되는 최대 인원</b>이며, 야간 인력을 어떻게 잡든 결론은 같습니다.
   </div>
-
+</div>
+</header>
+<div class="wrap">
   <h2><span class="no">01</span>무엇을 알아냈나</h2>
   <p><b>서울 요양시설 413곳을 하나씩, 실제 데이터로 계산했습니다.</b></p>
   <div class="stats">
@@ -362,5 +408,72 @@ const DATA={"fac":[[37.6152,126.955,"청운노인요양원","종로구",36,3,5.8
 })();
 </script>
 
+<script>
+(function(){
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 스크롤 진행선
+  var prog=document.getElementById('prog');
+  addEventListener('scroll',function(){
+    var d=document.documentElement;
+    prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+  },{passive:true});
+
+  // 리빌 대상 지정
+  var targets=[].slice.call(document.querySelectorAll('.wrap h2, .stat, .tablebox, .lever, .mapbox, .gapline, .wrap p, .internal, .foot, .hero .whatis, .hero .race, .hero .gapline'));
+  targets.forEach(function(el,i){ el.classList.add('rv'); });
+  if(reduced){ targets.forEach(function(el){el.classList.add('in');}); }
+  else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(el){io.observe(el);});
+  }
+
+  // 히어로 순차 등장 (로드 시)
+  var heroEls=[].slice.call(document.querySelectorAll('.hero .eyebrow,.hero h1,.hero .date'));
+  heroEls.forEach(function(el,i){
+    el.classList.add('rv');
+    setTimeout(function(){el.classList.add('in');}, reduced?0:120+i*110);
+  });
+
+  // 통계 카운트업
+  function countUp(el){
+    var txt=el.textContent.trim();
+    var m=txt.match(/^([^\d]*)([\d,\.]+)(.*)$/);
+    if(!m) return;
+    var target=parseFloat(m[2].replace(/,/g,'')), pre=m[1], post=m[3];
+    if(!isFinite(target)) return;
+    var dec=(m[2].split('.')[1]||'').length;
+    var t0=performance.now(), dur=1300;
+    (function step(t){
+      var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      var v=target*e;
+      el.textContent=pre+v.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})+post;
+      if(k<1) requestAnimationFrame(step); else el.textContent=txt;
+    })(t0);
+  }
+  if(!reduced){
+    var io2=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ countUp(e.target); io2.unobserve(e.target); }
+      });
+    },{threshold:.6});
+    [].slice.call(document.querySelectorAll('.stat .v, .clock .t')).forEach(function(el){io2.observe(el);});
+  }
+
+  // 레버 막대 채우기
+  var lever=document.querySelector('.lever');
+  if(lever){
+    if(reduced){ lever.classList.add('armed'); }
+    else{
+      new IntersectionObserver(function(es,obs){
+        es.forEach(function(e){ if(e.isIntersecting){ setTimeout(function(){lever.classList.add('armed');},150); obs.disconnect(); } });
+      },{threshold:.4}).observe(lever);
+    }
+  }
+})();
+</script>
 </body>
 </html>
