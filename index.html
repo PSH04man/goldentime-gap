@@ -88,6 +88,15 @@ blockquote{margin:20px 0; padding:16px 20px; background:var(--card); border:1px 
 .mapstat{margin-left:auto; text-align:right}
 .mapstat .v{font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--accent); line-height:1.1}
 .mapstat .k{font-size:11.5px; color:var(--sub)}
+.mapstat .v.pulse{animation:vpulse .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes vpulse{0%{transform:scale(1)}40%{transform:scale(1.28)}100%{transform:scale(1)}}
+.gauge{width:150px;height:6px;border-radius:99px;background:var(--chip);margin:6px 0 0 auto;overflow:hidden}
+.gauge i{display:block;height:100%;border-radius:99px;background:var(--accent);width:100%;transition:width 2.2s cubic-bezier(.16,1,.3,1)}
+.delta{display:inline-block;margin-top:6px;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--chip);opacity:0;transform:scale(2) rotate(-6deg)}
+.delta.show{animation:stamp .45s cubic-bezier(.2,1.4,.4,1) forwards}
+.delta.good{color:var(--ok)} .delta.bad{color:var(--accent)}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-8deg)}60%{opacity:1;transform:scale(.92) rotate(1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@media (prefers-reduced-motion: reduce){.mapstat .v.pulse,.delta.show{animation:none;opacity:1;transform:none}.gauge i{transition:none}}
 #leafmap{width:100%; height:540px; border-radius:8px; background:var(--chip)}
 .leaflet-container{font:inherit}
 .leaflet-tooltip{font-size:12.5px; line-height:1.5}
@@ -184,6 +193,8 @@ li{margin:7px 0}
       <div class="mapstat">
         <div class="v"><span id="totalN">9,984</span>명</div>
         <div class="k">도착 시점 미대피 합계</div>
+        <div class="gauge"><i id="gaugeBar"></i></div>
+        <span class="delta" id="deltaChip"></span>
       </div>
     </div>
     <div id="leafmap" role="img" aria-label="서울 요양시설 골든타임 갭 지도"></div>
@@ -282,22 +293,62 @@ const DATA={"fac":[[37.6152,126.955,"청운노인요양원","종로구",36,3,5.8
   const totalEl=document.getElementById('totalN');
   const totals={now:9984, equip:6759};
   let animId=null;
+  const lons=DATA.fac.map(f=>f[1]);
+  const lonMin=Math.min(...lons), lonSpan=Math.max(...lons)-lonMin;
+  let waveId=null;
   function setMode(m){
+    if(mode===m) return;
     mode=m;
     document.getElementById('btnNow').classList.toggle('on',m==='now');
     document.getElementById('btnEquip').classList.toggle('on',m==='equip');
-    markers.forEach((mk,i)=>mk.setRadius(R(mode==='now'?DATA.fac[i][7]:DATA.fac[i][8])));
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
     paint();
+
+    // ① 점 물결: 서→동 스윕, 시설별 딜레이 후 0.6초 축소/복원
+    const SWEEP=1200, DUR=600;
+    const r0=markers.map((mk,i)=>R(m==='now'?DATA.fac[i][8]:DATA.fac[i][7]));
+    const r1=markers.map((mk,i)=>R(m==='now'?DATA.fac[i][7]:DATA.fac[i][8]));
+    cancelAnimationFrame(waveId);
+    if(reduced){ markers.forEach((mk,i)=>mk.setRadius(r1[i])); }
+    else{
+      const delays=DATA.fac.map(f=>(f[1]-lonMin)/lonSpan*SWEEP);
+      const w0=performance.now();
+      (function wave(t){
+        let alive=false;
+        markers.forEach((mk,i)=>{
+          const k=Math.min(1,Math.max(0,(t-w0-delays[i])/DUR));
+          if(k<1) alive=true;
+          const e=1-Math.pow(1-k,3);
+          mk.setRadius(r0[i]+(r1[i]-r0[i])*e);
+        });
+        if(alive) waveId=requestAnimationFrame(wave);
+      })(w0);
+    }
+
+    // ② 카운터 롤링 2.2초 + ③ 펄스 + 게이지 + 델타 스탬프
     const from=parseInt(totalEl.textContent.replace(/,/g,'')), to=totals[m];
-    const t0=performance.now(), dur=matchMedia('(prefers-reduced-motion: reduce)').matches?0:800;
+    const t0=performance.now(), dur=reduced?0:2200;
     cancelAnimationFrame(animId); clearTimeout(window.__snapT);
+    const chip=document.getElementById('deltaChip');
+    chip.classList.remove('show');
     (function step(t){
       const k=dur?Math.min(1,(t-t0)/dur):1;
-      const e=1-Math.pow(1-k,3);
+      const e=1-Math.pow(2,-10*k);
       totalEl.textContent=Math.round(from+(to-from)*e).toLocaleString();
       if(k<1) animId=requestAnimationFrame(step);
     })(t0);
-    window.__snapT=setTimeout(()=>{cancelAnimationFrame(animId); totalEl.textContent=to.toLocaleString();},dur+150);
+    document.getElementById('gaugeBar').style.width=(to/totals.now*100)+'%';
+    window.__snapT=setTimeout(()=>{
+      cancelAnimationFrame(animId); totalEl.textContent=to.toLocaleString();
+      const v=totalEl.parentElement;
+      v.classList.remove('pulse'); void v.offsetWidth; v.classList.add('pulse');
+      const d=to-from;
+      if(d!==0){
+        chip.textContent=(d<0?'−':'+')+Math.abs(d).toLocaleString()+'명 '+(d<0?'구조 가능':'위험 복귀');
+        chip.classList.toggle('good',d<0); chip.classList.toggle('bad',d>0);
+        void chip.offsetWidth; chip.classList.add('show');
+      }
+    },dur+100);
   }
   document.getElementById('btnNow').onclick=()=>setMode('now');
   document.getElementById('btnEquip').onclick=()=>setMode('equip');
