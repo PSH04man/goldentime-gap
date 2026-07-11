@@ -27,21 +27,23 @@
     <p class="lead">버텨야 하는 시간(소방 도착)은 지역마다 다릅니다. 서울은 5~7분이지만, 도서·산간은 20분이 넘습니다. 이 지도는 전국 피난약자 시설을 <b>"버텨야 하는 시간"</b>으로 칠해, 방어 설비 예산을 어느 지역부터 투입해야 하는지 보여줍니다.</p>
   </div>
 
+  <div class="banner"><img src="img/island.jpg" alt="한국의 바다와 해안" style="object-position:center 60%"><div class="cap">바다가 아름다운 곳일수록, 소방차는 멀리 있습니다 — 완도 안전센터 거리 28km · 사진: Pixabay</div></div>
+
   <div class="card">
     <h2>같은 화재, 다른 시간 — 실제 데이터 대비</h2>
     <div class="grid2" style="text-align:center;margin:16px 0">
-      <div style="border:1px solid var(--line);border-radius:14px;padding:22px">
-        <div style="font-size:13px;color:var(--sub);font-weight:700">서울 (요양시설 413곳 실측)</div>
+      <div style="border:1px solid var(--border);border-radius:14px;padding:22px">
+        <div style="font-size:13px;color:var(--text2);font-weight:700">서울 (요양시설 413곳 실측)</div>
         <div class="big blue">5.6분</div>
         <div class="klabel">도착 중앙값 · 5.1~6.7분 · 방화문(60분)이면 여유 10배</div>
       </div>
       <div style="border:1px solid #f3c9c2;border-radius:14px;padding:22px;background:#fdf6f5">
-        <div style="font-size:13px;color:var(--accent);font-weight:700">전남 완도 (2019 실제 사망 사례)</div>
+        <div style="font-size:13px;color:var(--error);font-weight:700">전남 완도 (2019 실제 사망 사례)</div>
         <div class="big red">~20분</div>
         <div class="klabel">안전센터 28km — 최근 5년 노인시설 <b>유일한 사망 2명</b>이 난 곳</div>
       </div>
     </div>
-    <p style="font-size:14px;color:var(--sub);margin:0">완도의 20분은 회귀식(5.13 + 0.527×거리km)이 예측한 그대로였습니다 — 즉 이 지도는 <b>이미 일어난 죽음을 예측할 수 있었던 지도</b>입니다. 서울에선 방화문이 "여유"를 만들지만, 완도에선 방화문이 없으면 <b>물리적으로 아무도 구할 수 없습니다</b>.</p>
+    <p style="font-size:14px;color:var(--text2);margin:0">완도의 20분은 회귀식(5.13 + 0.527×거리km)이 예측한 그대로였습니다 — 즉 이 지도는 <b>이미 일어난 죽음을 예측할 수 있었던 지도</b>입니다. 서울에선 방화문이 "여유"를 만들지만, 완도에선 방화문이 없으면 <b>물리적으로 아무도 구할 수 없습니다</b>.</p>
   </div>
 
   <div class="card">
@@ -62,7 +64,7 @@
 
   <div class="card">
     <h2>데이터가 하는 일</h2>
-    <p style="font-size:14px;color:var(--sub);margin:0">색 = 소방청 화재현황 기반 도착 회귀 + 지역별 출동소요 통계. <b>소방청 데이터를 빼면 지도의 색 자체가 사라집니다.</b> 회귀식이 이미 전국 화재 데이터로 만들어져 있어, 타 시·도 시설 좌표만 추가하면 즉시 확장됩니다.</p>
+    <p style="font-size:14px;color:var(--text2);margin:0">색 = 소방청 화재현황 기반 도착 회귀 + 지역별 출동소요 통계. <b>소방청 데이터를 빼면 지도의 색 자체가 사라집니다.</b> 회귀식이 이미 전국 화재 데이터로 만들어져 있어, 타 시·도 시설 좌표만 추가하면 즉시 확장됩니다.</p>
   </div>
 </div>
 
