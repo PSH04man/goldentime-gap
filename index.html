@@ -149,8 +149,9 @@ td.num{font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
 h3.apx{font-size:17px; font-weight:800; margin:44px 0 8px; letter-spacing:-.01em}
 .chart{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 14px 10px; box-shadow:var(--shadow); overflow-x:auto}
 .chart svg{width:100%; height:auto; display:block; min-width:320px}
-.chartgrid{display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start}
-@media (max-width:720px){.chartgrid{grid-template-columns:1fr}}
+.chartgrid{display:grid; grid-template-columns:1fr; gap:44px; align-items:start; margin-top:8px}
+.chart svg{min-width:0}
+.chart{padding:22px 20px 14px}
 .steps{display:grid; gap:12px; margin:18px 0}
 .step{display:flex; gap:14px; background:var(--card); border:1px solid var(--line);  padding:16px 18px; box-shadow:var(--shadow); font-size:15px; line-height:1.65}
 .step .sn{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:14px}
