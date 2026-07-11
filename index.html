@@ -290,7 +290,12 @@ details.deep,.internal,.sol,.sctool,.scq .q,.scresult,.scask,.pill,.scopts butto
 .delta,.gauge,.gauge i,.lever .bar,.lever .fill{border-radius:0}
 .stat:hover{transform:none;box-shadow:none;border-color:#D6D3D1}
 .band .lever,.sctool{box-shadow:none}
-.scask{border-style:solid;border-color:var(--line);background:var(--chip)}
+.scask{border-style:solid;border-color:var(--line);background:#fff}
+/* 자가진단 박스 가시성 — 그림자/오버랩 대신 서피스 배경 + 또렷한 테두리 */
+.sctool{margin-top:48px;background:var(--chip);border:1px solid #A8A29E;padding:32px 30px 28px}
+.scq .q{background:var(--bg);border-color:var(--line)}
+.scopts button{background:var(--bg)}
+.scopts button.sel{background:var(--steel);border-color:var(--steel);color:#FAFAF9}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Libre+Baskerville:wght@400;700&display=swap">
