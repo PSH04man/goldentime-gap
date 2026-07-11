@@ -231,6 +231,44 @@ li{margin:8px 0}
 .scask ol{margin:0;padding-left:20px} .scask li{margin:6px 0;font-size:14px}
 .scfoot{font-size:12.5px;color:var(--sub);margin-top:14px;line-height:1.6}
 @media print{body>*{display:none}.scwrap{display:block!important}.sctool{margin:0;box-shadow:none;border:0}}
+
+/* v2 추가 */
+.gradepill{display:inline-block;min-width:22px;text-align:center;font-size:12px;font-weight:800;border-radius:6px;padding:2px 6px;background:var(--chip)}
+.gp-A,.gp-B{color:var(--ok)} .gp-C{color:#b07a1e} .gp-D,.gp-E{color:var(--accent)}
+.solgrid{display:grid;gap:14px;margin:22px 0}
+.sol{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.band .sol{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);box-shadow:none;color:#c6cfda}
+.band .sol b{color:#fff}
+.sol .rank{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.band .sol .rank{color:#ff8f93}
+.sol .why{font-size:13.5px;color:var(--sub);margin-top:8px}
+.band .sol .why{color:#8fa0b5}
+/* 자가진단 서비스 */
+.scwrap{max-width:760px;margin:0 auto;padding:0 22px}
+.sctool{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 48px -24px rgba(22,32,43,.28);padding:26px 24px 22px;margin-top:-44px;position:relative;z-index:3}
+.sctool h2{margin:0 0 6px;font-size:clamp(19px,3vw,24px);font-weight:800;letter-spacing:-.01em}
+.sctool .sub{margin:0 0 18px;color:var(--sub);font-size:14.5px}
+.scq{display:grid;gap:12px}
+.scq .q{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--bg)}
+.scq .q .ql{font-size:14.5px;font-weight:700;margin-bottom:9px}
+.scopts{display:flex;flex-wrap:wrap;gap:8px}
+.scopts button{border:1.5px solid var(--line);background:#fff;color:var(--sub);font:inherit;font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:999px;cursor:pointer;transition:.18s}
+.scopts button:hover{border-color:var(--steel);color:var(--ink)}
+.scopts button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.scresult{margin-top:18px;border-radius:14px;padding:22px;display:none}
+.scresult.on{display:block;animation:stamp .4s ease-out}
+.scresult.hold{background:#eef6f1;border:1px solid #bfe3d0}
+.scresult.risk{background:#fdf1ef;border:1px solid #f3c9c2}
+.scresult .verdict{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+.scresult.hold .verdict{color:var(--ok)} .scresult.risk .verdict{color:var(--accent)}
+.scline{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;margin:9px 0;line-height:1.55}
+.scline .ic{flex:0 0 18px;font-weight:800;text-align:center}
+.scline.ok .ic{color:var(--ok)} .scline.no .ic{color:var(--accent)}
+.scask{margin-top:16px;background:#fff;border:1px dashed #c9c3b4;border-radius:12px;padding:14px 18px}
+.scask .h{font-size:13px;font-weight:800;color:var(--sub);letter-spacing:.03em;margin-bottom:8px}
+.scask ol{margin:0;padding-left:20px} .scask li{margin:6px 0;font-size:14px}
+.scfoot{font-size:12.5px;color:var(--sub);margin-top:14px;line-height:1.6}
+@media print{body>*{display:none}.scwrap{display:block!important}.sctool{margin:0;box-shadow:none;border:0}}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -264,6 +302,10 @@ li{margin:8px 0}
   </div>
   <div class="gapline">
     <b>골든타임 갭 = 버텨야 하는 시간 − 버틸 수 있는 시간.</b> 방이 1시간 버티면(방화문) 소방이 살립니다. 1분 만에 뚫리면 아무도 못 살립니다. 감사원 확인: 2층 이상 요양시설의 <b>84.6%가 버틸 공간(임시피난장소)이 없습니다</b>(2015).
+  </div>
+  <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+    <a href="service.html" style="display:inline-block;background:var(--accent);color:#fff;font-weight:800;font-size:15px;padding:13px 26px;border-radius:12px;text-decoration:none">서비스 미리보기 — 화면으로 보기 →</a>
+    <a href="#selfcheck" style="display:inline-block;border:1.5px solid rgba(255,255,255,.3);color:#eef1f5;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px;text-decoration:none">30초 자가진단 해보기</a>
   </div>
 </div>
 <div class="scrollcue" aria-hidden="true">SCROLL</div>

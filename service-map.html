@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전국 격차 지도 — 골든타임 갭 (목업)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="service.css">
+</head>
+<body>
+<nav class="nav"><div class="in">
+  <a class="brand" href="service.html">골든타임 <span>갭</span></a>
+  <a href="service.html">서비스 홈</a>
+  <a href="index.html#selfcheck">30초 자가진단</a>
+  <a href="service-53s.html">53초 체험</a>
+  <a href="service-target.html">버티기 목표시간</a>
+  <a class="on" href="service-map.html">전국 격차</a>
+  <a href="service-admin.html">행정용</a>
+  <div class="sp"></div>
+  <a class="back" href="index.html">근거 브리핑 →</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="head">
+    <span class="mock">화면 목업 — 서울은 실측, 전국은 확장 계획</span>
+    <h1>서울에서 "답"인 버티기가, 농어촌에선 "유일한 답"입니다.</h1>
+    <p class="lead">버텨야 하는 시간(소방 도착)은 지역마다 다릅니다. 서울은 5~7분이지만, 도서·산간은 20분이 넘습니다. 이 지도는 전국 피난약자 시설을 <b>"버텨야 하는 시간"</b>으로 칠해, 방어 설비 예산을 어느 지역부터 투입해야 하는지 보여줍니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>같은 화재, 다른 시간 — 실제 데이터 대비</h2>
+    <div class="grid2" style="text-align:center;margin:16px 0">
+      <div style="border:1px solid var(--line);border-radius:14px;padding:22px">
+        <div style="font-size:13px;color:var(--sub);font-weight:700">서울 (요양시설 413곳 실측)</div>
+        <div class="big blue">5.6분</div>
+        <div class="klabel">도착 중앙값 · 5.1~6.7분 · 방화문(60분)이면 여유 10배</div>
+      </div>
+      <div style="border:1px solid #f3c9c2;border-radius:14px;padding:22px;background:#fdf6f5">
+        <div style="font-size:13px;color:var(--accent);font-weight:700">전남 완도 (2019 실제 사망 사례)</div>
+        <div class="big red">~20분</div>
+        <div class="klabel">안전센터 28km — 최근 5년 노인시설 <b>유일한 사망 2명</b>이 난 곳</div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--sub);margin:0">완도의 20분은 회귀식(5.13 + 0.527×거리km)이 예측한 그대로였습니다 — 즉 이 지도는 <b>이미 일어난 죽음을 예측할 수 있었던 지도</b>입니다. 서울에선 방화문이 "여유"를 만들지만, 완도에선 방화문이 없으면 <b>물리적으로 아무도 구할 수 없습니다</b>.</p>
+  </div>
+
+  <div class="card">
+    <h2>지도 화면 구성 (목업)</h2>
+    <div class="flow">
+      <span class="st">전국 시·군·구를 "버텨야 하는 시간"으로 채색</span><span class="ar">→</span>
+      <span class="st">10분+ 지역의 피난약자 시설 수 집계</span><span class="ar">→</span>
+      <span class="st">지역 클릭 → 방어설비 우선 투입 근거 카드</span>
+    </div>
+    <table style="margin-top:14px">
+      <tr><th>버텨야 하는 시간</th><th>지역 성격</th><th class="num">정책 함의</th></tr>
+      <tr><td><span class="pill good">5~7분</span></td><td>대도시</td><td class="num">방화문 = 여유 확보</td></tr>
+      <tr><td><span class="pill mid">7~12분</span></td><td>중소도시·도농복합</td><td class="num">방화문+대피공간 필수</td></tr>
+      <tr><td><span class="pill bad">12분+</span></td><td>도서·산간 (완도형)</td><td class="num"><b>버티기 설비가 유일한 생존책 — 최우선 예산</b></td></tr>
+    </table>
+    <p class="note">지역을 칠하는 것이지 시설을 지목하는 것이 아닙니다 — "격차가 큰 지역"은 시설의 잘못이 아니라 <b>국가가 메워야 할 소방 공백</b>의 신호입니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>데이터가 하는 일</h2>
+    <p style="font-size:14px;color:var(--sub);margin:0">색 = 소방청 화재현황 기반 도착 회귀 + 지역별 출동소요 통계. <b>소방청 데이터를 빼면 지도의 색 자체가 사라집니다.</b> 회귀식이 이미 전국 화재 데이터로 만들어져 있어, 타 시·도 시설 좌표만 추가하면 즉시 확장됩니다.</p>
+  </div>
+</div>
+
+<div class="foot">화면 목업 · 서울 수치는 실측, 전국 채색은 확장 계획 · <a href="service.html">← 서비스 홈</a></div>
+</body>
+</html>

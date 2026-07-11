@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>행정용 우선순위 — 골든타임 갭 (목업)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="service.css">
+</head>
+<body>
+<nav class="nav"><div class="in">
+  <a class="brand" href="service.html">골든타임 <span>갭</span></a>
+  <a href="service.html">서비스 홈</a>
+  <a href="index.html#selfcheck">30초 자가진단</a>
+  <a href="service-53s.html">53초 체험</a>
+  <a href="service-target.html">버티기 목표시간</a>
+  <a href="service-map.html">전국 격차</a>
+  <a class="on" href="service-admin.html">행정용</a>
+  <div class="sp"></div>
+  <a class="back" href="index.html">근거 브리핑 →</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="head">
+    <span class="mock">화면 목업 — 실데이터는 익명 표기 (실명은 행정 로그인 화면에서만)</span>
+    <h1>내일 아침, 어느 시설부터 방문할지 — 순서와 체크리스트.</h1>
+    <p class="lead">서울 413곳의 실측 6종(입소 인원·요양보호사·도착시간·공단 평가등급·건물 층수·건축연도)을 결합해 <b>화재안전조사 방문 순서</b>를 만들고, 조사관이 현장에서 채울 <b>체크리스트 4항목</b>을 함께 제공합니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>조사 우선순위 (샘플 — 결합 고위험군)</h2>
+    <p style="font-size:13.5px;color:var(--sub);margin:0 0 10px">결합 고위험 = <b>4층 이상 건물</b> 그리고 <b>공단 평가 C·D·E</b> — 서울에 <b>139곳, 어르신 2,758명</b>. 아래는 익명 샘플입니다.</p>
+    <table>
+      <tr><th>순위</th><th>시설 (행정화면에서 실명)</th><th class="num">입소</th><th class="num">건물</th><th>평가</th><th class="num">도착예측</th><th>우선 확인</th></tr>
+      <tr><td>1</td><td>○○구 요양시설 A (1984년 건물)</td><td class="num">118명</td><td class="num">10층</td><td><span class="pill bad">C</span></td><td class="num">5.6분</td><td>방화문·대피공간</td></tr>
+      <tr><td>2</td><td>○○구 요양시설 B (1995년 건물)</td><td class="num">80명</td><td class="num">7층</td><td><span class="pill bad">E</span></td><td class="num">5.3분</td><td>방화문·SP 작동</td></tr>
+      <tr><td>3</td><td>○○구 요양시설 C (1980년 건물)</td><td class="num">94명</td><td class="num">5층</td><td><span class="pill bad">C</span></td><td class="num">5.6분</td><td>대피공간·사용층</td></tr>
+      <tr><td colspan="7" style="text-align:center;color:var(--sub);font-size:12.5px">… 139곳 전체는 행정 화면에서 · 이후 평가 C·D·E(152곳) → 노출 순</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>현장 조사 체크리스트 — 지금 어느 데이터에도 없는 4가지</h2>
+      <table>
+        <tr><td>① 침실 방화문·자동폐쇄장치 <b>작동</b> 여부</td></tr>
+        <tr><td>② 시설이 실제 사용하는 <b>층</b></td></tr>
+        <tr><td>③ 층별 <b>대피공간</b>(방화구획 구역) 유무</td></tr>
+        <tr><td>④ 스프링클러 <b>작동 상태</b>(점검일)</td></tr>
+      </table>
+      <p class="note">이 4항목이 채워지는 순간, 지도는 추정 없는 <b>판정 지도</b>로 진화합니다 — 조사가 데이터를 만들고, 데이터가 다음 조사를 정합니다.</p>
+    </div>
+    <div class="card">
+      <h2>권한별 처방 분리</h2>
+      <table>
+        <tr><th>처방</th><th>집행 주체</th></tr>
+        <tr><td>화재안전조사·피난기구·대피공간 정비</td><td><b>소방서</b> (소방시설법)</td></tr>
+        <tr><td>침실 방화문·방화구획 공사</td><td><b>구청 건축부서</b> (통보)</td></tr>
+        <tr><td>야간 인력 기준</td><td>복지부 (참고 전달)</td></tr>
+      </table>
+      <p class="note">순위 산정에 가중치 합성을 쓰지 않습니다 — 가중치를 바꾸면 순위가 뒤집힘을 실측으로 확인했고, 그래서 <b>어떤 가중치로도 반박 불가능한 결합 조건</b>만 씁니다. 개별 시설 실명·순위는 행정 화면에서만 표시(낙인 방지).</p>
+    </div>
+  </div>
+</div>
+
+<div class="foot">화면 목업 · 수치는 서울 413곳 실측, 시설명만 익명화 · <a href="service.html">← 서비스 홈</a></div>
+</body>
+</html>

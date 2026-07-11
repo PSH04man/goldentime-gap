@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>53초 체험 — 골든타임 갭 (목업)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="service.css">
+</head>
+<body>
+<nav class="nav"><div class="in">
+  <a class="brand" href="service.html">골든타임 <span>갭</span></a>
+  <a href="service.html">서비스 홈</a>
+  <a href="index.html#selfcheck">30초 자가진단</a>
+  <a class="on" href="service-53s.html">53초 체험</a>
+  <a href="service-target.html">버티기 목표시간</a>
+  <a href="service-map.html">전국 격차</a>
+  <a href="service-admin.html">행정용</a>
+  <div class="sp"></div>
+  <a class="back" href="index.html">근거 브리핑 →</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="head">
+    <span class="mock">화면 목업 — 실제 체험은 구현 예정</span>
+    <h1>53초. 스킵할 수 없습니다 — 불도 그러니까요.</h1>
+    <p class="lead">사는 동네를 넣으면, 그 지역 <b>실제 소방 도착시간</b>이 카운트다운됩니다. 그리고 방화구획 없는 방이 견딜 수 없게 되는 <b>53초</b>가 화면에서 그대로 흐릅니다. 끝까지 기다려야 결과가 열립니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>체험 흐름 (스토리보드)</h2>
+    <div class="frames">
+      <div class="frame">
+        <div class="scene">🛏️<span class="t">00:00</span></div>
+        <div class="cap"><b>① 시작 — 평범한 방</b>"서울 마포구에 사시는군요. 이 지역 소방차 도착: 평균 5분 36초. 지금, 옆방에서 불이 났습니다."</div>
+      </div>
+      <div class="frame">
+        <div class="scene" style="background:linear-gradient(#0d131b 20%,#3a2a24)">🌫️<span class="t">00:31</span></div>
+        <div class="cap"><b>② 연기가 차오름 (실시간)</b>화면이 위에서부터 어두워집니다. "31초 — 이제 복도가 안 보입니다. 당신이라면 지금 뛰겠지만, 91세 김OO 님은 침대에서 일어나지 못합니다."</div>
+      </div>
+      <div class="frame">
+        <div class="scene" style="background:#1c0f0d">⬛<span class="t">00:53</span></div>
+        <div class="cap"><b>③ 53초 — 그리고 선택</b>"방이 견딜 수 없게 됐습니다. 소방차는 아직 4분 43초 남았습니다." → 버튼 하나가 나타납니다: <b>[방화문이 있었다면?]</b> — 누르면 문이 닫히고, 타이머가 60분으로 바뀝니다.</div>
+      </div>
+    </div>
+    <div class="verdict good" style="margin-top:16px">체험 종료 화면 — "당신은 53초를 견뎠습니다. 방화문 하나가 53초를 60분으로 바꿉니다." + 공유 카드 저장 + <a href="index.html#selfcheck">우리 시설 자가진단 →</a></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>왜 이 체험인가</h2>
+      <p style="font-size:14px;color:var(--sub);margin:0">"53초"라는 숫자는 읽으면 잊힙니다. 그러나 <b>몸으로 겪은 53초</b>는 기억됩니다. 요양시설 화재는 평소 관심 밖 주제라, 통계가 아니라 감각으로 전달해야 사람이 움직입니다 — 체험 끝에 자가진단으로 자연스럽게 이어집니다.</p>
+    </div>
+    <div class="card">
+      <h2>데이터가 하는 일</h2>
+      <p style="font-size:14px;color:var(--sub);margin:0">도착 카운트다운 = 소방청 화재기록 289건 회귀(지역별 실제값). 53초·연기 진행 = 피난공학 화재 시뮬레이션 실측(가시거리 붕괴 53초, 60℃ 도달 98초). <b>소방청 데이터를 빼면 "당신 동네" 개인화가 사라져 체험이 성립하지 않습니다.</b></p>
+    </div>
+  </div>
+</div>
+
+<div class="foot">화면 목업 · 실제 구현 시 순수 웹(서버 불필요) · <a href="service.html">← 서비스 홈</a></div>
+</body>
+</html>

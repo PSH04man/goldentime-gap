@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>버티기 목표시간 계산기 — 골든타임 갭 (목업)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="service.css">
+</head>
+<body>
+<nav class="nav"><div class="in">
+  <a class="brand" href="service.html">골든타임 <span>갭</span></a>
+  <a href="service.html">서비스 홈</a>
+  <a href="index.html#selfcheck">30초 자가진단</a>
+  <a href="service-53s.html">53초 체험</a>
+  <a class="on" href="service-target.html">버티기 목표시간</a>
+  <a href="service-map.html">전국 격차</a>
+  <a href="service-admin.html">행정용</a>
+  <div class="sp"></div>
+  <a class="back" href="index.html">근거 브리핑 →</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="head">
+    <span class="mock">화면 목업 — 샘플 시설 예시</span>
+    <h1>도착이 구조가 아닙니다 — 물이 나올 때까지 버텨야 합니다.</h1>
+    <p class="lead">소방차가 와도 소화전 연결·호스 전개·건물 진입에 시간이 더 듭니다. 이 계산기는 시설 주소만 넣으면 <b>"우리 시설은 몇 분을 버텨야 하는가"</b>라는 목표 숫자 하나를 줍니다 — 방어 설비를 몇 분짜리로 갖춰야 하는지가 정해집니다.</p>
+  </div>
+
+  <div class="card">
+    <h2>샘플 결과 화면 — 서울 ○○구 요양시설 A (5층 건물, 입소 82명)</h2>
+    <div class="grid3" style="text-align:center;margin:18px 0">
+      <div><div class="big blue">5.8분</div><div class="klabel">① 소방차 도착 (화재기록 289건 회귀 · 안전센터 2.1km)</div></div>
+      <div><div class="big blue">+1.9분</div><div class="klabel">② 방수 개시까지 (최근접 소화전 140m · 급수 세팅)</div></div>
+      <div><div class="big blue">+1.4분</div><div class="klabel">③ 5층 진입·호스 전개 (층수 가산)</div></div>
+    </div>
+    <div class="verdict bad" style="text-align:center;font-size:17px">
+      이 시설의 버티기 목표시간 = <b style="font-size:24px">약 9분</b> &nbsp;·&nbsp; 지금 방이 버티는 시간(방화구획 없음) = <b style="font-size:24px">1~4분</b> → <b>미달</b>
+    </div>
+    <div class="flow" style="justify-content:center">
+      <span class="st">처방: 침실 방화문(+60분 확보) → 목표 충족</span>
+      <span class="st">층별 대피공간 → 여유 2배</span>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>기존 계산과 뭐가 다른가</h2>
+      <p style="font-size:14px;color:var(--sub);margin:0">지금까지는 "도착 6분"에서 끝났습니다. 그러나 현장 상식은 <b>도착 ≠ 진화</b> — 장성 요양병원은 진화까지 28분이 걸렸고 그 사이 21명이 희생됐습니다. 소방용수(소화전) 위치와 층수를 더해 <b>실제로 물이 나오는 시각</b>을 계산하면, 버텨야 하는 시간이 시설마다 다르게 나옵니다.</p>
+    </div>
+    <div class="card">
+      <h2>데이터가 하는 일</h2>
+      <p style="font-size:14px;color:var(--sub);margin:0">① 도착 = 소방청 화재현황 회귀 ② 방수 지연 = 소방청 <b>소방용수시설 위치</b>(공개)와 시설 간 거리 ③ 층수 = 건축물대장. <b>소방청 데이터 2종 중 하나만 빼도 목표시간이 계산되지 않습니다.</b> ②·③ 계수는 소방 표준 절차 기준의 보수적 추정치로 명시합니다.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>누가 어떻게 쓰나</h2>
+    <table>
+      <tr><th>사용자</th><th>입력</th><th>얻는 것</th></tr>
+      <tr><td><b>시설 운영자</b></td><td>주소 (또는 시설명)</td><td>목표시간 + 현재 설비로 충족 여부 + 개선 순서</td></tr>
+      <tr><td><b>소방서</b></td><td>관할 일괄</td><td>관할 내 "목표시간 미달" 시설 수 → 조사·정비 근거</td></tr>
+      <tr><td><b>가족</b></td><td>시설 동네</td><td>"이 동네는 몇 분 버텨야 하는 곳" — 자가진단과 연결</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="foot">화면 목업 · 수치는 샘플 시설 예시 · <a href="service.html">← 서비스 홈</a></div>
+</body>
+</html>
