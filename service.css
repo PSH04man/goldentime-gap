@@ -1,24 +1,24 @@
 /* 골든타임 갭 — 서비스 미리보기 · ThoughtStream 디자인 시스템
    minimal · zen · 진중/엄중. 세리프 제목(명조/Baskerville) + Inter/Pretendard 본문.
    완전 플랫(그림자 없음) · 0px 각진 모서리 · 스톤 무채색 · 넉넉한 여백 · 흑백 사진. */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 
 :root{
-  /* ThoughtStream 팔레트 */
-  --stone:#78716C; --sage:#A8A29E; --ink:#1C1917;
-  --bg:#FAFAF9; --surface:#F5F5F4; --raised:#EFEDEB;
-  --text:#1C1917; --text2:#57534E; --text3:#A8A29E;
-  --border:#E7E5E4; --border-m:#D6D3D1; --border-s:#A8A29E;
-  --success:#65A30D; --warning:#CA8A04; --error:#DC2626; --info:#78716C;
-  /* HTML 인라인에서 쓰는 이전 토큰명 별칭(스톤으로 흡수) */
-  --primary:#78716C; --steel:#78716C;
-  --font-d:"Nanum Myeongjo","Libre Baskerville",Georgia,serif;
-  --font-b:"Inter","Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif;
-  --focus:0 0 0 2px #FAFAF9,0 0 0 4px #78716C;
+  /* 소방청(nfa.go.kr) 참고 — Noto Sans KR · 네이비 #043764 · 소방 레드 #c12f29 */
+  --stone:#3a6188; --sage:#9fb2cc; --ink:#1b2733;
+  --bg:#f4f5f7; --surface:#eaeef3; --raised:#e2e7ee;
+  --text:#1b2733; --text2:#565f6b; --text3:#9aa3af;
+  --border:#dadada; --border-m:#c7ccd3; --border-s:#9fb2cc;
+  --success:#2f7d5a; --warning:#CA8A04; --error:#c12f29; --info:#3a6188;
+  /* HTML 인라인에서 쓰는 이전 토큰명 별칭(네이비로 흡수) */
+  --primary:#043764; --steel:#3a6188;
+  --font-d:"Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-b:"Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;
+  --focus:0 0 0 2px #f4f5f7,0 0 0 4px #3a6188;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
-  font-family:var(--font-b);font-size:17px;line-height:1.8;
+  font-family:var(--font-b);font-size:17px;line-height:1.8;letter-spacing:-.15px;
   word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility}
 a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--border-m);transition:color .15s,border-color .15s}
